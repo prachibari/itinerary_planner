@@ -31,7 +31,7 @@ import mysql.connector
 
 mydb = mysql.connector.connect(
   host="localhost",
-  user="root",
+  user="",
   passwd="",
   auth_plugin='mysql_native_password',
   database='pythonproj'
@@ -44,11 +44,11 @@ bcrypt = Bcrypt()
 lettersAndDigits = string.ascii_letters + string.digits
 
 # MySQL configurations
-app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_USER'] = ''
 app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'pythonproj'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-app.config['SECRET_KEY'] = '58458792afnki845'
+app.config['SECRET_KEY'] = ''
 
 #Email Configurations
 app.config.update(
@@ -71,12 +71,7 @@ if __name__ == '__main__':
 #defaults.height = 600
 
 df_iplace = pd.read_sql("select ip.itinerary_id,ip.placeid,p.placename,p.city from itinerary_places ip inner join placedetails p on ip.placeid=p.placeid", con=mydb)   
-#from bokeh.util.string import encode_utf8
-#menu = [(tuple(df_iplace['city'].unique()))]
-#menu = [("mumbai","pune")]
-#dropdown = Dropdown(label="Dropdown button", button_type="warning", menu=menu)
 
-#cname='Mumbai'
 
 @app.route("/popular-places",methods=["GET","POST"])
 def popular_places():
@@ -134,11 +129,6 @@ def loadplot(city):
 @app.route("/users")
 def users():
     users = pd.read_csv("users.xlsx")
-    #df_users = pandas.read_sql("select city,email from users  group by city", con=mydb)
-    #df_users.rename(columns={ df_users.columns[1]: "count" },inplace=True)
-    #cities = df_users['city']
-    #users = df_users['count'].astype(float).values
-    #donut_from_df = Donut(users,values=users['Email'],label=users['City'],agg='count')
     hover = HoverTool(tooltips=[('Pct', '@pct')],mode='vline')
     users['']
     donut_from_df = bc.Donut(users['City'],level_spacing=[0.0, 0.01])
