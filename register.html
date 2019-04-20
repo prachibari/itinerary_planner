@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background-color:#e9ecef;
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+margin-top: auto;
+margin-bottom: auto;
+width: 600px;
+background-color:#fff;
+box-shadow: 0px 0px 100px 1px #888888;
+}
+
+
+.input-group-prepend span{
+width: 50px;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+}
+
+.login_btn{
+width: 100px;
+float:right;
+}
+
+
+.links{
+}
+
+.links a{
+margin-left: 4px;
+}
+.form-group{
+height:60px;
+}
+.form-control-label{
+line-height:8px;
+}
+.form-control{
+height:30px;
+
+}
+.card-body{
+min-height:550px;
+}
+
+#warnmsg{
+    position: absolute;
+    width: 323px;
+    font-size: 11px;
+}
+#alreadyacc{
+ font-size:11px;
+}
+
+</style>
+
+<body>
+	<div class="container">
+	<div class="d-flex justify-content-center h-600">
+			<div class="card">
+				<div class="card-header">
+				<h3>Sign Up</h3>
+				
+				<div class="d-flex links" id='alreadyacc'>
+					Already Have An Account?<a href="/login">Sign In</a>
+				</div>
+				</div>
+	<div class="card-body">
+
+	<div class="col-md-11">
+          
+          
+		  <form action="" method="POST">
+				{{ form.hidden_tag() }}
+          <fieldset class="form-group">
+				<div class="form-group">
+					{{ form.fname.label(class="form-control-label") }}		
+					{% if form.fname.errors %}
+						{{ form.fname(class="form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.fname.errors %}
+								<span>{{ error }} </span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.fname(class="form-control form-control-lg") }}
+					{% endif %}
+				</div>
+				<div class="form-group">
+					{{ form.lname.label(class="form-control-label") }}
+					{% if form.lname.errors %}
+						{{ form.lname(class="form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.lname.errors %}
+								<span>{{ error }} </span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.lname(class="form-control form-control-lg") }}
+					{% endif %}
+				</div>
+				<div class="form-group">
+					{{ form.city.label(class="form-control-label") }}
+					{% if form.city.errors %}
+						{{ form.city(class="form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.city.errors %}
+								<span>{{ error }} </span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.city(class="form-control form-control-lg") }}
+					{% endif %}
+				</div>
+				<div class="form-group">
+					{{ form.email.label(class="form-control-label") }}
+					{% if form.email.errors %}
+						{{ form.email(class="form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.email.errors %}
+								<span>{{ error }} </span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.email(class="form-control form-control-lg") }}
+					{% endif %}
+		
+				</div>
+				<div class="form-group">
+					{{ form.password.label(class="form-control-label") }}
+					{% if form.password.errors %}
+						{{ form.password(class="form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.password.errors %}
+								<span>{{ error }} </span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.password(class="form-control form-control-lg") }}
+					{% endif %}
+		
+				</div>
+				<div class="form-group">
+					{{ form.confirm_password.label(class="form-control-label") }}
+					{% if form.confirm_password.errors %}
+						{{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+						<div class="invalid-feedback">
+							{% for error in form.confirm_password.errors %}
+								<span>{{ error }} </span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.confirm_password(class="form-control form-control-lg") }}
+					{% endif %}
+		
+				</div>
+				{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				{% for category, message in messages %}
+					<div class="alert alert-{{ category }}" id='warnmsg'>
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endif %}
+		  {% endwith %}
+		  <div class="form-group">
+				<input type="submit" value="Sign Up" class="btn btn-primary login_btn">
+		  </div>
+		  </fieldset>
+		  <!-- <div class="form-group">
+			{{ form.submit(class="btn btn-outline-info") }}
+		  </div> -->
+		  
+		  </form>
+	</div>
+	</div> <!--card body-->
+			
+	 <!--card-->
+    </div>
+	</div>
+        <!-- <div class="border-top pt-3">
+			<small class="text-muted">
+				Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}"> Sign In</a>
+			</small>
+		</div> -->
+</body>
+</head>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!--Bootsrap 4 CDN-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background-color:#e9ecef;
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 400px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color:#fff;
+box-shadow: 0px 0px 100px 1px #888888;
+}
+
+
+.input-group-prepend span{
+width: 50px;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+}
+
+.login_btn{
+width: 100px;
+float:right;
+}
+</style>
+
+<body>
+<div class=" container">    
+<div class="d-flex justify-content-center h-100">
+	<div class="card">
+				<div class="card-header">
+				<h3>Reset Password</h3>
+				</div>
+		<div class="card-body">
+		
+<! -- {% block content %} -->
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="input-group form-group">						
+					{% if form.email.errors %}
+						{{ form.email(class="form-control form-control-lg is-invalid",id="email",placeholder="Email") }}
+						<div class="invalid-feedback">
+							{% for error in form.email.errors %}
+								<span>{{ error }} </span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.email(class="form-control form-control-lg",id="email", placeholder="Email") }}
+					{% endif %}
+			</div>
+
+			<div class="form-group">
+					<input type="submit" value="Submit" class="btn btn-primary login_btn">
+			</div>
+			<div class="col-md-16">
+					{% with messages = get_flashed_messages(with_categories=true) %}
+					{% if messages %}
+					{% for category, message in messages %}
+					<div class="alert alert-{{ category }}" style="position:relative;top:60px;">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endif %}
+		  {% endwith %}
+    </div>  
+		</form>
+		</div> <!--card body-->
+	</div> <!--card-->
+</div>
+</div> 
+</body>
+</head>
+</html>
+		
+<!-- {% endblock content %} -->
