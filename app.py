@@ -18,13 +18,6 @@ import pandas as pd
 import bokeh.charts as bc
 from bokeh.resources import CDN
 from bokeh.embed import components
-#from bokeh.charts import defaults, vplot, hplot, show, output_file
-#from bokeh.models import (HoverTool, FactorRange, Plot, LinearAxis, Grid,Range1d)
-#from bokeh.models.widgets import Dropdown,Select,TextInput
-#from bokeh.layouts import widgetbox,column
-#from bokeh.models import ColumnDataSource
-#from bokeh.io import curdoc
-#from bokeh.plotting import figure
 #############################
 
 import mysql.connector
